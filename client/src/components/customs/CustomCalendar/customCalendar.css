@@ -1,0 +1,82 @@
+.react-calendar {
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+    font-size: .8em;
+    .react-calendar__navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 0.5px solid #f0f0f0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        button:nth-child(2) {
+            border: none;
+        }
+        button {
+            cursor: pointer;
+            background-color: #fff;
+            border: 0.5px solid #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: grid;
+            place-items: center;
+        }
+
+        button:nth-child(1),
+        button:nth-child(3) {
+            &:hover {
+                color: #fff;
+                background-color: hsl(240 5.9% 10%);
+            }
+        }
+    }
+
+    .react-calendar__month-view__weekdays {
+        color: hsl(240 5.9% 10%);
+        text-align: center;
+        font-weight: bold;
+        abbr {
+            text-decoration: none;
+        }
+        margin-bottom: 15px;
+    }
+
+    .react-calendar__month-view__days {
+        /* gap: 10px; */
+        margin: 0 auto;
+        .tile-sunday {
+            color: red;
+
+            :disabled {
+                color: rgba(136, 8, 8, 0.35);
+            }
+        }
+        .react-calendar__tile {
+            height: auto !important;
+            width: auto !important;
+            text-align: center;
+            border: none;
+            background-color: #fff;
+            padding: 10px;
+            margin: 0;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 0.5px solid #f0f0f0;
+            
+
+            &:hover {
+                color: #fff;
+                background-color: hsl(240 5.9% 10%);
+            }
+
+            &:hover:enabled {
+                color: #fff;
+                background-color: hsl(240 5.9% 10%);
+            }
+            &:active:enabled {
+                color: #fff;
+                background-color: hsl(240 5.9% 10%);
+            }
+        }
+    }
+}
