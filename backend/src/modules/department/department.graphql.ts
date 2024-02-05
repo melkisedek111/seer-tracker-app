@@ -20,3 +20,5 @@ export default gql`
 		createDepartment(name: String!, acronym: String!): Department!
 	}
 `;
+
+

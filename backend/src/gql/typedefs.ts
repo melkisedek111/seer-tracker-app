@@ -89,6 +89,7 @@ export default gql`
 		positions: [Position!]!
 		getPositions: [Position]!
 		getPositionByParams(name: String, id: Int): Position
+		getDepartmentByParams($id: Int, name: String, acronym: String): Department
 
 		departments: [Department!]!
 		getDepartments: [Department]!
@@ -134,6 +135,8 @@ export default gql`
 
 		updateRefreshToken(findToken: String data: UpdateRefreshTokenData isRemoveToken: Boolean): UserWithRefreshToken
 
-		updatePosition(id: Int name: String): Position
+		updatePosition(id: Int name: String): Position!
+
+		updateDepartment(id: Int! name: String! acronym: String!): Department!
 	}
 `;

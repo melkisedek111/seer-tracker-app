@@ -59,23 +59,23 @@ class PositionModel {
 	/**
 	 * This function is used to update position
 	 * Updated by: Mel Ubalde @ Friday, January 26, 2024 3:49 PM
-	 * @param params { name: string }
+	 * @param params PositionTypes
 	 * @returns PositionType | null
 	 */
-		async updatePosition(
-			params: PositionTypes
-		): Promise<PositionType | null> {
-			return await prismaQueryHandler<PositionType | null>(async () => {
-				return await this.prisma.position.update({
-					where: {
-						id: params.id
-					},
-					data: {
-						name: params.name
-					},
-				});
-			}, "updatePosition");
-		}
+	async updatePosition(
+		params: PositionTypes
+	): Promise<PositionType | null> {
+		return await prismaQueryHandler<PositionType | null>(async () => {
+			return await this.prisma.position.update({
+				where: {
+					id: params.id
+				},
+				data: {
+					name: params.name
+				},
+			});
+		}, "updatePosition");
+	}
 }
 
 export default PositionModel;

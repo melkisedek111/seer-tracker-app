@@ -1,5 +1,5 @@
 import { apollo, gql } from "@elysiajs/apollo";
-import PositionModel from "./department.model";
+import PositionModel, { DepartmentTypes } from "./department.model";
 import DepartmentModel from "./department.model";
 
 export const DepartmentResolver = {
@@ -12,11 +12,19 @@ export const DepartmentResolver = {
             const departmentModel = new DepartmentModel();
 			return departmentModel.getPositions();
 		},
+		getDepartmentByParams: async (parent: any, params: DepartmentTypes) => {
+			const departmentModel = new DepartmentModel();
+			return await departmentModel.getDepartmentByParams(params);
+		},
 	},
 	Mutation: {
-		createDepartments: async (parent: any, { name }: any) => {
+		createDepartment: async (parent: any, params: { name: string, acronym: string }) => {
             const departmentModel = new DepartmentModel();
-			return await departmentModel.createPosition(name);
+			return await departmentModel.createDepartment(params);
 		},
+		updateDepartment: async (parent: any, params: DepartmentTypes) => {
+			const departmentModel = new DepartmentModel();
+			return await departmentModel.updateDepartment(params);
+		}
 	},
 };

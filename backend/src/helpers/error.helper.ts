@@ -1,7 +1,7 @@
-export type ResponseTypes = {
+export type ResponseTypes<T = any> = {
 	message?: string;
 	error?: boolean;
-	data?: any;
+	data?: T;
 	status?: number;
 };
 
@@ -16,11 +16,11 @@ export const ErrorCatchMessage = (
 };
 
 
-export const SetRequestResponse = (props: ResponseTypes): ResponseTypes => {
+export const SetRequestResponse = <T = any>(props: ResponseTypes<T>): ResponseTypes<T> => {
      const responseJson: ResponseTypes = {
         message: props.message || "",
         error: props.error || false,
-        data: props.data || {},
+        data: props.data || undefined,
         status: props?.status || 200,
     };
 
