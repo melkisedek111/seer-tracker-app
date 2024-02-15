@@ -1,20 +1,18 @@
-import { gql } from "@elysiajs/apollo";
+import {} from "@elysiajs/apollo";
 
-
-export const getDepartmentQuery = gql`
-    query getDepartments {
-        getDepartments {
-            id
-            name
-            acrony
-            createdAt
-            updatedAt
-        }
+export const getDepartmentsQuery = `
+query getDepartments {
+    getDepartments {
+        id
+        name
+        acronym
+        createdAt
+        updatedAt
     }
-
+}
 `;
 
-export const getDepartmentByParamsQuery = gql`
+export const getDepartmentByParamsQuery = `
     query getDepartmentByParams($id: Int, $name: String, $acronym: String) {
         getDepartmentByParams(id: $id name: $name acronym: $acronym) {
             id 
@@ -24,7 +22,7 @@ export const getDepartmentByParamsQuery = gql`
     }
  `;
 
- export const createDepartmentQuery = gql`
+export const createDepartmentQuery = `
     mutation createDepartment($name: String!, $acronym: String!) {
         createDepartment(name: $name acronym: $acronym) {
             id
@@ -34,8 +32,8 @@ export const getDepartmentByParamsQuery = gql`
     }
  `;
 
- export const updateDepartmentQuery = gql`
-    mutation updateDepartment($id Int!, $name: String!, $acronym: String!) {
+export const updateDepartmentQuery = `
+    mutation updateDepartment($id: Int!, $name: String!, $acronym: String!) {
         updateDepartment(id: $id name: $name acronym: $acronym) {
             id
             name

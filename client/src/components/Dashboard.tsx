@@ -33,9 +33,9 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select'
 import { Calendar } from '../components/ui/calendar'
 import CustomCalendar from '../components/customs/CustomCalendar/CustomCalendar'
-import RequestByDepartmentChartSection from '../components/RequestByDepartmentChartSection'
-import LatestRequestSection from '../components/LatestRequestSection'
-import RequestByMonthChartSection from '../components/RequestByMonthChartSection'
+import RequestByDepartmentChartSection from "./dashboard/RequestByDepartmentChartSection"
+import RequestByMonthChartSection from "./dashboard/RequestByMonthChartSection"
+import LatestRequestSection from "./dashboard/LatestRequestSection"
 
 export function DatePickerWithRange({
     className,

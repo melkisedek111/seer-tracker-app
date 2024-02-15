@@ -1,4 +1,4 @@
-import { ServiceRequestCardTypes } from "@/components/RequestSection";
+import { ServiceRequestCardTypes } from "@/components/RequestPage";
 
 export const REQUEST_DATA: ServiceRequestCardTypes[] = [
 	{

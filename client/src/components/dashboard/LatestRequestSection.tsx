@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardContent, CardHeader } from './ui/card'
+import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { FaCalendarDay, FaBarsProgress } from "react-icons/fa6";
 import { BsFilePerson, BsBuilding, BsDiagram2Fill } from "react-icons/bs";
 

@@ -1,5 +1,5 @@
 import { AreaChart, BarChart, Flex, LineChart, Switch, Title } from "@tremor/react";
-import { CardContent, CardHeader, CardTitle, Card } from "./ui/card";
+import { CardContent, CardHeader, CardTitle, Card } from "@/components/ui/card";
 import { useState } from "react";
 import {
     Select,

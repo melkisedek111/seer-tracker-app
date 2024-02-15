@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import CreateUserSection from './CreateUserSection'
-import UserTable from './UserTable'
+import CreateUserSection from './user/CreateUserSection';
+import UserTable from './user/UserTable';
 
-const UserSection = () => {
+const UserPage = () => {
     const [isCreateUser, setIsCreateUser] = useState<boolean>(false);
 
     return isCreateUser ? <CreateUserSection setIsCreateUser={setIsCreateUser} /> : <UserTable setIsCreateUser={setIsCreateUser} />
 }
 
-export default UserSection
+export default UserPage
 
 
 

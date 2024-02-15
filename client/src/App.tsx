@@ -2,9 +2,8 @@ import './App.css'
 import ThemedApp from './ThemedApp'
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar'
-import RequestSection from './components/RequestSection'
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, Outlet } from 'react-router-dom';
-import UserSection from './components/UserSection';
+import UserPage from './components/UserPage';
 import * as Spotlight from '@spotlightjs/spotlight';
 import { Toaster } from "@/components/ui/toaster"
 import Loading from "./assets/loading.svg";
@@ -21,6 +20,8 @@ import { useAppDispatch, useAppSelector } from './redux/reduxHook';
 import { useEffect } from 'react';
 import { setRedirectUnauthorizeToDashboard } from './redux/features/global/globalSlice';
 import ProtectedSettingPage from './components/SettingsPage';
+import RequestPage from './components/RequestPage';
+import DesignationPage from './components/DesignationPage';
 
 
 // const router = createBrowserRouter([
@@ -93,17 +94,22 @@ function App() {
                         } />
                         <Route path="requests" element={
                             <ProtectedRoute allowedRoles={[ROLES.ADMIN, ROLES.SUPER_ADMIN, ROLES.REGULAR]}>
-                                <RequestSection />
+                                <RequestPage />
                             </ProtectedRoute>
                         } />
                         <Route path="users" element={
                             <ProtectedRoute allowedRoles={[ROLES.SUPER_ADMIN]}>
-                                <UserSection />
+                                <UserPage />
                             </ProtectedRoute>
                         } />
                         <Route path="settings" element={
                             <ProtectedRoute allowedRoles={[ROLES.SUPER_ADMIN]}>
                                 <ProtectedSettingPage />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="designations" element={
+                            <ProtectedRoute allowedRoles={[ROLES.SUPER_ADMIN]}>
+                                <DesignationPage />
                             </ProtectedRoute>
                         } />
                     </Route>

@@ -100,7 +100,6 @@ class AuthModel {
 				],
 			},
 		});
-		await this.prisma.$disconnect();
 
 		return user;
 	}
@@ -115,8 +114,6 @@ class AuthModel {
 		const refreshToken =  await this.prisma.refreshToken.create({
 			data: { ...params },
 		});
-
-		await this.prisma.$disconnect();
 
 		return refreshToken;
 	}
@@ -139,8 +136,6 @@ class AuthModel {
 		const refreshToken = await this.prisma.refreshToken.findFirst({
 			where: whereParams,
 		});
-
-		await this.prisma.$disconnect();
 
 		return refreshToken;
 	}
@@ -199,8 +194,6 @@ class AuthModel {
 			where: whereClause,
 			data: tokenData,
 		});
-
-		await this.prisma.$disconnect();
 
 		return refreshToken;
 	}

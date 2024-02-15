@@ -10,7 +10,7 @@ import { SetRequestResponse } from "../../helpers/error.helper";
 const handleAuthSignIn = async (request: CustomRequest) => {
 	try {
 		const inputs = request.body || {};
-		const authServices = new AuthServices(request.apolloServer, request);
+		const authServices = new AuthServices(request);
 		const result = await authServices.authSignin(inputs as AuthSiginType);
 		const { status } = result;
 		request.set.status = status;
@@ -22,7 +22,7 @@ const handleAuthSignIn = async (request: CustomRequest) => {
 
 const handleRefreshToken = async (request: CustomRequest) => {
 	try {
-		const authServices = new AuthServices(request.apolloServer, request);
+		const authServices = new AuthServices(request);
 		const result = await authServices.handleRefreshToken();
 		request.set.status = result.status;
 		return result;
@@ -33,7 +33,7 @@ const handleRefreshToken = async (request: CustomRequest) => {
 
 const handleAuthLogout = async (request: CustomRequest) => {
 	try {
-		const authServices = new AuthServices(request.apolloServer, request);
+		const authServices = new AuthServices(request);
 		const result = await authServices.handleAuthLogout();
 		request.set.status = result.status;
 		return result;

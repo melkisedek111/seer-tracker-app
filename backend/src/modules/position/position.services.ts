@@ -9,7 +9,7 @@ import {
 } from "./position.queries";
 import { PositionTypes } from "./position.model";
 
-export type CreatePositionType = {
+export type TCreatePosition = {
 	name: string;
 };
 
@@ -23,10 +23,10 @@ class PositionServices {
 	/**
 	 * This function is used to create new position
 	 * Updated by: Mel Ubalde @ Friday, January 26, 2024 3:49 PM
-	 * @param params CreatePositionType
+	 * @param params TCreatePosition
 	 * @returns PositionType | null
 	 */
-	async createPosition({ name }: CreatePositionType): Promise<ResponseTypes> {
+	async createPosition({ name }: TCreatePosition): Promise<ResponseTypes> {
 		try {
 			// get position by name
 			const getPositionByName = await customExecuteOperation<PositionTypes>(
@@ -69,7 +69,7 @@ class PositionServices {
 	/**
 	 * This function is used to update position
 	 * Updated by: Mel Ubalde @ Friday, January 26, 2024 3:49 PM
-	 * @param params CreatePositionType
+	 * @param params TCreatePosition
 	 * @returns PositionType | null
 	 */
 	async updatePosition(params: PositionTypes): Promise<ResponseTypes> {
@@ -111,7 +111,7 @@ class PositionServices {
 					}
 				);
 
-				return SetRequestResponse({ data: updatePosition, message: "Position name has been updated." });
+				return SetRequestResponse({ data: updatePosition, message: "Selected position has been updated." });
 			} 
 
 			// if position name has no changes
@@ -180,6 +180,43 @@ class PositionServices {
 				{
 					query: getPositionByParamsQuery,
 					variables: { id: Number(id) },
+				}
+			);
+
+			if (!result)
+				return SetRequestResponse({
+					data: undefined,
+					message: "Failed to fetch position details.",
+				});
+
+			return SetRequestResponse({ data: result });
+		} catch (error) {
+			console.log(error);
+			return SetRequestResponse({
+				error: true,
+				message: "Server error!",
+				status: 500,
+			});
+		}
+	}
+
+
+	/**
+	 * This function is used to get position
+	 * Updated by: Mel Ubalde @ Friday, January 26, 2024 3:49 PM
+	 * @param params {id: number}
+	 * @returns PositionType | null
+	 */
+	async deletePosition(params: { id: number }): Promise<ResponseTypes> {
+		try {
+			const positionId = Number(params.id);
+
+			const result = await customExecuteOperation<PositionTypes>(
+				this.apolloServer,
+				"deletePosition",
+				{
+					query: getPositionByParamsQuery,
+					variables: { id: positionId },
 				}
 			);
 

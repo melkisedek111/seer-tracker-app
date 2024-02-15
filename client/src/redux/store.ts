@@ -12,10 +12,11 @@ import {
 	REGISTER,
 } from "redux-persist";
 import { positionApi } from "./features/position/positionApi";
+import { departmentApi } from "./features/deparment/departmentApi";
 
 const logger = createLogger();
 
-const middlewares = [authApi.middleware, positionApi.middleware];
+const middlewares = [authApi.middleware, positionApi.middleware, departmentApi.middleware];
 
 if (process.env.NODE_ENV === "development") {
 	middlewares.push(logger);

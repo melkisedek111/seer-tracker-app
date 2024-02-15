@@ -6,6 +6,7 @@ import { persistReducer } from "redux-persist";
 import globalSlice from "./features/global/globalSlice";
 import { positionApi } from "./features/position/positionApi";
 import positionSlice from "./features/position/positionSlice";
+import { departmentApi } from "./features/deparment/departmentApi";
 
 const persistConfig = {
 	key: "root",
@@ -18,6 +19,7 @@ const persistedUserReducer = persistReducer(persistConfig, authSlice);
 export default combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [positionApi.reducerPath]: positionApi.reducer,
+    [departmentApi.reducerPath]: departmentApi.reducer,
     positionState: positionSlice,
     authState: persistedUserReducer,
     globalState: globalSlice

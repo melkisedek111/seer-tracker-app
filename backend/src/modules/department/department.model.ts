@@ -1,6 +1,7 @@
 import { PrismaClient, Department as DepartmentType } from "@prisma/client";
+import { prismaQueryHandler } from "../../helpers/prisma.helper";
 
-export type DepartmentTypes = {
+export type TDepartment = {
 	id: number;
 	name: string;
 	acronym: string;
@@ -18,10 +19,16 @@ class DepartmentModel {
 		this.prisma = new PrismaClient();
 	}
 
-	async getDepartmentByParams(params: GetDepartmentByParamsType): Promise<DepartmentType | null> {
-		return await this.prisma.department.findFirst({
-			where: { ...params },
-		});
+	/**
+	 * This function is used to get departments
+	 * Updated by: Mel Ubalde @ Friday, January 26, 2024 3:49 PM
+	 * @param params
+	 * @returns TDepartment[] | null
+	 */
+	async getDepartments(): Promise<TDepartment[] | null> {
+		return await prismaQueryHandler<TDepartment[]>(async () => {
+			return await this.prisma.department.findMany({});
+		}, "getDepartments");
 	}
 
 	/**
@@ -31,9 +38,9 @@ class DepartmentModel {
 	 * @returns PositionType | null
 	 */
 	async getDepartmentByParams(
-		params: DepartmentTypes
+		params: Partial<TDepartment>
 	): Promise<DepartmentType | null> {
-		return await prismaQueryHandler<PositionType | null>(async () => {
+		return await prismaQueryHandler<DepartmentType | null>(async () => {
 			return await this.prisma.department.findFirst({
 				where: { ...params },
 			});
@@ -47,9 +54,9 @@ class DepartmentModel {
 	 * @returns PositionType | null
 	 */
 	async createDepartment(
-		params: { name: string, acronym: string }
+		params: TDepartment
 	): Promise<DepartmentType | null> {
-		return await prismaQueryHandler<PositionType | null>(async () => {
+		return await prismaQueryHandler<DepartmentType | null>(async () => {
 			return await this.prisma.department.create({
 				data: params
 			});
@@ -59,11 +66,11 @@ class DepartmentModel {
 	/**
 	 * This function is used to update department
 	 * Updated by: Mel Ubalde @ Friday, January 26, 2024 3:49 PM
-	 * @param params DepartmentTypes
+	 * @param params TDepartment
 	 * @returns DepartmentType | null
 	 */
 	async updateDepartment(
-		params: DepartmentTypes
+		params: TDepartment
 	): Promise<DepartmentType | null> {
 		return await prismaQueryHandler<DepartmentType | null>(async () => {
 			return await this.prisma.department.update({

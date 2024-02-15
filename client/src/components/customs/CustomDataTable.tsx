@@ -35,10 +35,10 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
-import { Card, CardContent } from './ui/card'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Card, CardContent } from '@/components/ui/card'
 import Loading from "../assets/loading1.svg"
-import { Skeleton } from './ui/skeleton'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type CustomDataTableType<DataType> = {
     sorting: SortingState;

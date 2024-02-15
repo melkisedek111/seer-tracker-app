@@ -76,6 +76,24 @@ class PositionModel {
 			});
 		}, "updatePosition");
 	}
+
+	/**
+	 * This function is used to delete position
+	 * Updated by: Mel Ubalde @ Friday, January 26, 2024 3:49 PM
+	 * @param params { id: number }
+	 * @returns PositionType | null
+	 */
+	async deletePosition(
+		params: { id: number }
+	): Promise<any> {
+		return await prismaQueryHandler(async () => {
+			return await this.prisma.position.delete({
+				where: {
+					id: params.id
+				},
+			});
+		}, "deletePosition");
+	}
 }
 
 export default PositionModel;

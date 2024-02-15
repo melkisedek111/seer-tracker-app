@@ -18,7 +18,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Textarea } from "./ui/textarea"
+import { Textarea } from "@/components/ui/textarea"
 import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"

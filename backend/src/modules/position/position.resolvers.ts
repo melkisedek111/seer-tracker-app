@@ -3,9 +3,9 @@ import PositionModel, { PositionTypes } from "./position.model";
 
 export const PositionResolver = {
 	Query: {
-		positions: async () => {
+		getPosition: async (parent: any, args: any) => {
 			const positionModel = new PositionModel();
-			return positionModel.getPositions();
+			return await positionModel.getPositionByParams({ id: parent.positionId });
 		},
 		getPositions: async () => {
 			const positionModel = new PositionModel();
@@ -24,6 +24,10 @@ export const PositionResolver = {
 		updatePosition: async (parent: any, params: PositionTypes) => {
 			const positionModel = new PositionModel();
 			return await positionModel.updatePosition(params);
+		},
+		deletePosition: async (parent: any, params: { id: number }) => {
+			const positionModel = new PositionModel();
+			return await positionModel.deletePosition(params);
 		},
 	},
 };

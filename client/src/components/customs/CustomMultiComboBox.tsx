@@ -15,9 +15,9 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { Badge } from './ui/badge'
+import { Badge } from '@/components/ui/badge'
 import { FaCirclePlus } from "react-icons/fa6";
-import { Checkbox } from './ui/checkbox'
+import { Checkbox } from '@/components/ui/checkbox'
 
 export type ComboBoxValueTypes = { value: string | undefined, label: string }
 type CustomMultiComboBoxTypes = {

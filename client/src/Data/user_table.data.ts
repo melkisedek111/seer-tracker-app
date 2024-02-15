@@ -1,4 +1,4 @@
-import { UserDataTableType } from "@/components/UserTable";
+import { UserDataTableType } from "@/components/user/UserTable";
 
 export const UserTableDummyData: UserDataTableType[] = [
 	{

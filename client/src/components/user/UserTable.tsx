@@ -19,13 +19,13 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Badge } from './ui/badge'
+import { Badge } from '@/components/ui/badge'
 import { FaCircleCheck, FaCircleXmark, FaPlus } from "react-icons/fa6";
-import CustomMultiComboBox, { ComboBoxValueTypes } from './CustomMultiComboBox'
+import CustomMultiComboBox, { ComboBoxValueTypes } from '@/components/customs/CustomMultiComboBox'
 import { FaRegStar, FaKey, FaRegCircleUser } from "react-icons/fa6";
 import { UserTableDummyData } from '@/Data/user_table.data'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
-import CustomDataTable from './CustomDataTable'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import CustomDataTable from '@/components/customs/CustomDataTable'
 import { ROLES, ROLE_COLOR, ROLE_KEYS } from '@/constants/app.constants'
 
 export type UserDataTableType = {

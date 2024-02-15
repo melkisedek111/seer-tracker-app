@@ -87,12 +87,14 @@ export default gql`
 
 	type Query {
 		positions: [Position!]!
+		getPosition: Position
 		getPositions: [Position]!
 		getPositionByParams(name: String, id: Int): Position
-		getDepartmentByParams($id: Int, name: String, acronym: String): Department
+		getDepartmentByParams(id: Int, name: String, acronym: String): Department
 
 		departments: [Department!]!
 		getDepartments: [Department]!
+		getDepartment: Department
 
 		getUsers: [User]!
 		getUserByEmail(email: String!): User
@@ -138,5 +140,7 @@ export default gql`
 		updatePosition(id: Int name: String): Position!
 
 		updateDepartment(id: Int! name: String! acronym: String!): Department!
+
+		deletePosition(id: Int!): Position
 	}
 `;

@@ -1,28 +1,30 @@
 import { apollo, gql } from "@elysiajs/apollo";
-import PositionModel, { DepartmentTypes } from "./department.model";
+import PositionModel, { TDepartment } from "./department.model";
 import DepartmentModel from "./department.model";
 
 export const DepartmentResolver = {
 	Query: {
-		departments: async () => {
-            const departmentModel = new DepartmentModel();
-			return departmentModel.getPositions();
+		getDepartment: async (parent: { departmentId: number }, args: any) => {
+			const departmentModel = new DepartmentModel();
+			return await departmentModel.getDepartmentByParams({
+				id: parent.departmentId,
+			});
 		},
         getDepartments: async () => {
             const departmentModel = new DepartmentModel();
-			return departmentModel.getPositions();
+			return await departmentModel.getDepartments();
 		},
-		getDepartmentByParams: async (parent: any, params: DepartmentTypes) => {
+		getDepartmentByParams: async (parent: any, params: Partial<TDepartment>) => {
 			const departmentModel = new DepartmentModel();
 			return await departmentModel.getDepartmentByParams(params);
 		},
 	},
 	Mutation: {
-		createDepartment: async (parent: any, params: { name: string, acronym: string }) => {
+		createDepartment: async (parent: any, params: TDepartment) => {
             const departmentModel = new DepartmentModel();
 			return await departmentModel.createDepartment(params);
 		},
-		updateDepartment: async (parent: any, params: DepartmentTypes) => {
+		updateDepartment: async (parent: any, params: TDepartment) => {
 			const departmentModel = new DepartmentModel();
 			return await departmentModel.updateDepartment(params);
 		}

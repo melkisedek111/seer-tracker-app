@@ -1,7 +1,7 @@
 import Elysia from "elysia";
 import { CustomRequest } from "../..";
 import PositionServices, {
-	CreatePositionType,
+	TCreatePosition,
 } from "../../modules/position/position.services";
 import { PositionTypes } from "../../modules/position/position.model";
 
@@ -42,7 +42,7 @@ const updatePosition = async (request: CustomRequest) => {
 
 const createPosition = async (request: CustomRequest) => {
 	try {
-		const { name } = request.body as CreatePositionType;
+		const { name } = request.body as TCreatePosition;
 		const positionServices = new PositionServices(request.apolloServer);
 		const result = await positionServices.createPosition({ name });
 		request.set.status = result.status;
@@ -52,4 +52,18 @@ const createPosition = async (request: CustomRequest) => {
 	}
 };
 
-export { getPositions, createPosition, getPosition, updatePosition };
+const deletePosition = async (request: CustomRequest) => {
+	try {
+
+		return "DELETE FEATURE IS PROHIBITED"
+		const params = request.body || {};
+		const positionServices = new PositionServices(request.apolloServer);
+		const result = await positionServices.deletePosition(params as { id: number });
+		request.set.status = result.status;
+		return result;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export { getPositions, createPosition, getPosition, updatePosition, deletePosition };

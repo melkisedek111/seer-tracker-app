@@ -35,3 +35,9 @@ export const updatePositionQuery = `
     }
   }
 `;
+
+export const deletePositinoQuery = `
+  mutation deletePosition($id: Int!) {
+    deletePosition(id: $id) {}
+  }
+`

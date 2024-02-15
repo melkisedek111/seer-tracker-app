@@ -3,7 +3,8 @@ import {
 	createPosition,
 	getPositions,
     getPosition,
-    updatePosition
+    updatePosition,
+    deletePosition
 } from "../controllers/position.controller";
 import { handleJWTVerification } from "../middleware/verifyJwt";
 import { ADMIN_LIST, ROLES_LIST } from "../../constants/app.constants";
@@ -23,6 +24,11 @@ const positionRouter = (app: Elysia) => {
         .post("/updatePosition", updatePosition, {
             body: t.Object({
                 name: t.String(),
+                id: t.Number()
+            })
+        })
+        .post("/deletePosition", deletePosition, {
+            body: t.Object({
                 id: t.Number()
             })
         })

@@ -18,6 +18,8 @@ import { handleJWTVerification } from "./server/middleware/verifyJwt";
 import { corsOptions } from "./config/corsOptions";
 import { allowedOrigins } from "./config/allowedOrigins";
 import { credentials } from "./server/middleware/credentials";
+import departmentRouter from "./server/routes/department.routes";
+import { DepartmentResolver } from "./modules/department/department.resolvers";
 
 export interface CustomRequest extends Request {
 	[x: string]: any;
@@ -25,12 +27,12 @@ export interface CustomRequest extends Request {
 }
 
 const app = new Elysia();
-const server = new ApolloServer({
+export const apolloServer = new ApolloServer({
 	typeDefs: typedefs,
-	resolvers: [PositionResolver, UserResolver, AuthResolver],
+	resolvers: [PositionResolver, UserResolver, AuthResolver, DepartmentResolver],
 });
 
-await startStandaloneServer(server, {
+await startStandaloneServer(apolloServer, {
 	listen: { port: 4001 },
 });
 
@@ -62,7 +64,7 @@ app
 	);
 
 app.on("beforeHandle", (request: any) => {
-	request.apolloServer = server;
+	request.apolloServer = apolloServer;
 });
 
 
@@ -70,6 +72,7 @@ app.use(authRouter);
 app.onBeforeHandle(handleJWTVerification)
 app.use(userRouter);
 app.use(positionRouter);
+app.use(departmentRouter);
 
 app.listen(3000);
 

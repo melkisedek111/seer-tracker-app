@@ -155,6 +155,14 @@ function Navbar() {
         {
             id: 5,
             isSelectedLink: false,
+            title: "Designation",
+            link: "/designations",
+            classNames: "",
+            icon: <PersonIcon />
+        },
+        {
+            id: 6,
+            isSelectedLink: false,
             title: "Settings",
             link: "/settings",
             classNames: "",

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import PositionSection from './PositionSection';
-import CreateDepartmentSection from './CreateDepartmentSection';
 import WithAuthenticate from './WithAuthenticate';
+import DepartmentSection from './department/DepartmentSection';
+import PositionSection from './position/PositionSection';
 
 
 const SettingsPage = () => {
@@ -35,7 +35,7 @@ const SettingsPage = () => {
                             selectedLink === "Positions" ? <PositionSection /> : null
                         }
                         {
-                            selectedLink === "Departments" ? <CreateDepartmentSection /> : null
+                            selectedLink === "Departments" ? <DepartmentSection /> : null
                         }
                     </div>
                 </div>

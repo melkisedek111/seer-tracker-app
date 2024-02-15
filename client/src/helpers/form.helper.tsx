@@ -17,3 +17,16 @@ export const handleSelectChange = <T extends {}>(key: string, value: string, for
         setFormValues({ ...formValues, [key]: { ...formValues[key as keyof T], value } });
     }
 }
+
+export type ValueFormType<T = string> = {
+    value: T;
+    message: string;
+    isError: boolean;
+    isRequired: boolean;
+    otherErrorMessage?: {
+        [key in string]: {
+            message: string;
+            isError: boolean;
+        }
+    }
+}

@@ -1,9 +1,10 @@
 import { ApolloServer } from "@apollo/server";
+import { apolloServer } from "..";
 
 class ServiceHelper {
 	private apolloServer: ApolloServer;
 
-	constructor(apolloServer: ApolloServer) {
+	constructor() {
 		this.apolloServer = apolloServer;
 	}
 
@@ -20,6 +21,7 @@ class ServiceHelper {
 
 			if ("singleResult" in result.body && result.body.singleResult) {
 				if (result?.body?.singleResult?.errors !== undefined) {
+					console.log(result?.body?.singleResult?.errors)
 					data = undefined;
 				} else if (result?.body?.singleResult?.data) {
 					data = result?.body?.singleResult?.data[resolverKey] || undefined;

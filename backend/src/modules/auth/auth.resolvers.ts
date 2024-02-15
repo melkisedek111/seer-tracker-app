@@ -6,21 +6,15 @@ import {
 	UpdateRefreshTokenInputType,
 } from "./auth.model";
 import AuthModel from "./auth.model";
-import PositionModel, { GetPositionByType } from "../position/position.model";
+import PositionModel from "../position/position.model";
 import DepartmentModel from "../department/department.model";
 import UserModel from "../user/user.model";
+import { DepartmentResolver } from "../department/department.resolvers";
+import { PositionResolver } from "../position/position.resolvers";
 
 const getPositionAndDepartment = {
-	position: async (parent: any, args: any) => {
-		const positionModel = new PositionModel();
-		return await positionModel.getPositionByParams({ id: parent.positionId });
-	},
-	department: async (parent: any, args: any) => {
-		const departmentModel = new DepartmentModel();
-		return await departmentModel.getDepartmentByParams({
-			id: parent.departmentId,
-		});
-	},
+	position: PositionResolver.Query.getPosition,
+	department: DepartmentResolver.Query.getDepartment
 };
 
 /**

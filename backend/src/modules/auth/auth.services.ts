@@ -20,8 +20,8 @@ export type CreatePositionType = {
 class AuthServices extends ServiceHelper {
 	private request: CustomRequest;
 
-	constructor(apolloServer: ApolloServer, request: CustomRequest) {
-		super(apolloServer);
+	constructor(request: CustomRequest) {
+		super();
 		this.request = request;
 	}
 
@@ -44,9 +44,10 @@ class AuthServices extends ServiceHelper {
 					status: 400,
 					error: true,
 				});
-
+			
 			// get user details with refrseh token details based on the giver username
-			const getUserAuthSignin = await this.executeGql<AuthGetUserType | null>("getUserAuthSignin",
+			const getUserAuthSignin = await this.executeGql<AuthGetUserType | null>(
+				"getUserAuthSignin",
 					{
 						query: getUserAuthSigninQuery,
 						variables: { username: signinInput.username },
@@ -59,7 +60,6 @@ class AuthServices extends ServiceHelper {
 				status: 400,
 				error: true,
 			});
-
 			const { password, refreshToken, ...otherUserDetails } = getUserAuthSignin;
 			
 			const isMatch = await Bun.password.verify(inputPassword, password);
